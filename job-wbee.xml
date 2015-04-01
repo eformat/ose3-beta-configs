@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>KUBECONFIG_CREDENTIALS</name>
+          <description>Contents of .kubeconfig file containing API credentials</description>
+          <defaultValue>
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://ose3-master.example.com:8443
+  name: ose3-master.example.com:8443
+contexts:
+- context:
+    cluster: ose3-master.example.com:8443
+    namespace: wbeez
+    user: mike
+  name: ose3-master.example.com:8443-mike
+current-context: ose3-master.example.com:8443-mike
+kind: Config
+preferences: {}
+users:
+- name: mike
+  user:
+    token: MzIxYTkxZmMtNGVjMC00NTExLTliNGItZWNkNDdiZWFlY2Rl</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>APP_NAME</name>
+          <description>Application Standard Name</description>
+          <defaultValue>wbeez</defaultValue>
+	</hudson.model.TextParameterDefinition>	  
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>
+export KUBECONFIG=.kubeconfig
+echo "${KUBECONFIG_CREDENTIALS}" > "${KUBECONFIG}"
+
+TEST_ENDPOINT=`osc get services -n ${APP_NAME} | grep  ${APP_NAME} | awk '{print $4":"$5}'`
+
+#REGISTRY_ENDPOINT=`osc get services | grep docker-registry | awk '{print $4":"$5}'`
+# FIXME
+export REGISTRY_ENDPOINT=172.30.17.44:5000
+
+# clean up existing test deployment
+set +e
+echo "Removing old test deployment"
+for pod in `osc get rc -n ${APP_NAME} | grep ^${APP_NAME} | awk '{print $1}'`;do
+   osc delete rc -n ${APP_NAME} $pod
+done
+  
+for pod in `osc get pod -n ${APP_NAME} | grep ^${APP_NAME} | awk '{print $1}'`;do
+   osc delete pod -n ${APP_NAME} $pod
+done
+  
+set -e
+
+# wait for old pod to be torn down
+sleep 10
+
+# trigger a build
+echo "Triggering new application build and deployment"
+osc start-build -n ${APP_NAME} ${APP_NAME}
+
+# check that the build test image deployed successfully
+set +e
+rc=1
+count=0
+attempts=100
+
+echo "Checking test deployment at $TEST_ENDPOINT"
+while [ $rc -ne 0 -a $count -lt $attempts ]; do
+  curl -s --connect-timeout 2 $TEST_ENDPOINT
+  rc=$?
+  if [ $rc -ne 0 ]; then
+    count=$(($count+1))
+    echo "Attempt $count/$attempts"
+    sleep 5
+  fi
+done
+set -e
+
+if [ $count -eq $attempts ]; then
+    echo "Failed to reach test deployment"
+    exit 1
+fi
+
+# Tag the image into production
+#echo "Test deployment succeeded, rolling out to production..."
+
+#COMMIT=`curl -s http://$REGISTRY_ENDPOINT/v1/repositories/test/${APP_NAME}/tags/test`
+#curl -s -X PUT  http://$REGISTRY_ENDPOINT/v1/repositories/test/${APP_NAME}/tags/prod -d "$COMMIT"
+      </command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
