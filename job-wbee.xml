@@ -28,12 +28,12 @@ preferences: {}
 users:
 - name: mike
   user:
-    token: MzIxYTkxZmMtNGVjMC00NTExLTliNGItZWNkNDdiZWFlY2Rl</defaultValue>
+    token: MjM1OTA5YWItMWM0ZC00N2Q5LWEwNTQtOTU0Yjk5OGE1ZjNl</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>APP_NAME</name>
           <description>Application Standard Name</description>
-          <defaultValue>wbeez</defaultValue>
+          <defaultValue>wordbeez-docker</defaultValue>
 	</hudson.model.TextParameterDefinition>	  
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
