@@ -14,7 +14,7 @@
           },
       "id": "wordbeez-route",
       "host": "wbeez.cloudapps.example.com",
-      "serviceName": "wbeez"
+      "serviceName": "wordbeez-docker"
     }
   ]
 }
