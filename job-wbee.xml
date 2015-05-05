@@ -34,7 +34,12 @@ users:
           <name>APP_NAME</name>
           <description>Application Standard Name</description>
           <defaultValue>wordbeez-docker</defaultValue>
-	</hudson.model.TextParameterDefinition>	  
+		</hudson.model.TextParameterDefinition>
+	    <hudson.model.TextParameterDefinition>
+          <name>APP_NAMESPACE</name>
+          <description>Application Standard Namespace</description>
+          <defaultValue>wbeez</defaultValue>
+		</hudson.model.TextParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -51,7 +56,7 @@ users:
 export KUBECONFIG=.kubeconfig
 echo "${KUBECONFIG_CREDENTIALS}" > "${KUBECONFIG}"
 
-TEST_ENDPOINT=`osc get services -n ${APP_NAME} | grep  ${APP_NAME} | awk '{print $4":"$5}'`
+TEST_ENDPOINT=`osc get services -n ${APP_NAMESPACE} | grep  ${APP_NAME} | awk '{print $4":"$5}'`
 
 #REGISTRY_ENDPOINT=`osc get services | grep docker-registry | awk '{print $4":"$5}'`
 # FIXME
@@ -60,12 +65,12 @@ export REGISTRY_ENDPOINT=172.30.17.44:5000
 # clean up existing test deployment
 set +e
 echo "Removing old test deployment"
-for pod in `osc get rc -n ${APP_NAME} | grep ^${APP_NAME} | awk '{print $1}'`;do
-   osc delete rc -n ${APP_NAME} $pod
+for pod in `osc get rc -n ${APP_NAMESPACE} | grep ^${APP_NAME} | awk '{print $1}'`;do
+   osc delete rc -n ${APP_NAMESPACE} $pod
 done
   
-for pod in `osc get pod -n ${APP_NAME} | grep ^${APP_NAME} | awk '{print $1}'`;do
-   osc delete pod -n ${APP_NAME} $pod
+for pod in `osc get pod -n ${APP_NAMESPACE} | grep ^${APP_NAME} | awk '{print $1}'`;do
+   osc delete pod -n ${APP_NAMESPACE} $pod
 done
   
 set -e
@@ -75,7 +80,7 @@ sleep 10
 
 # trigger a build
 echo "Triggering new application build and deployment"
-osc start-build -n ${APP_NAME} ${APP_NAME}
+osc start-build -n ${APP_NAMESPACE} ${APP_NAME}
 
 # check that the build test image deployed successfully
 set +e
