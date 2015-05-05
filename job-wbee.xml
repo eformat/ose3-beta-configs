@@ -56,7 +56,7 @@ users:
 export KUBECONFIG=.kubeconfig
 echo "${KUBECONFIG_CREDENTIALS}" > "${KUBECONFIG}"
 
-TEST_ENDPOINT=`osc get services -n ${APP_NAMESPACE} | grep  ${APP_NAME} | awk '{print $4":"$5}'`
+TEST_ENDPOINT=`osc get services -n ${APP_NAMESPACE} | grep  ${APP_NAME} | awk '{print $4":"$5}' | sed -e 's/\/TCP//'`
 
 #REGISTRY_ENDPOINT=`osc get services | grep docker-registry | awk '{print $4":"$5}'`
 # FIXME
