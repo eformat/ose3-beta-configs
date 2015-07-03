@@ -13,7 +13,7 @@
             "name": "wbeez-route"
           },
       "id": "wordbeez-route",
-      "host": "wbeez.cloudapps.example.com",
+      "host": "wbeez.cloudapps.ose.eformat.co.nz",
       "serviceName": "wordbeez-docker"
     }
   ]
