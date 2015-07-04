@@ -1,0 +1,19 @@
+{
+  "metadata":{
+    "name":"php-upload-route"
+  },
+  "kind":"Config",
+  "apiVersion":"v1",
+  "items":[
+    {
+      "kind": "Route",
+      "apiVersion": "v1",
+          "metadata": {
+            "name": "php-upload-route"
+          },
+      "id": "wordbeez-route",
+      "host": "php-upload.cloudapps.ose.eformat.co.nz",
+      "serviceName": "php-upload"
+    }
+  ]
+}
