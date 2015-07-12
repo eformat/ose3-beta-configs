@@ -291,6 +291,14 @@
             }
           },
           "spec": {
+            "volumes": [
+                    {
+                        "name": "pvol",
+                        "persistentVolumeClaim": {
+                            "claimName": "claim2"
+                        }
+                    }
+            ],
             "containers": [
               {
                 "name": "ruby-helloworld-database",
@@ -316,6 +324,12 @@
                   }
                 ],
                 "resources": {},
+                "volumeMounts": [
+                            {
+                                "name": "pvol",
+                                "mountPath": "/var/lib/mysql/data"
+                            }
+                ],
                 "terminationMessagePath": "/dev/termination-log",
                 "imagePullPolicy": "Always",
                 "capabilities": {},
