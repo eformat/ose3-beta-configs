@@ -149,7 +149,12 @@
       },
       "spec": {
         "strategy": {
-          "type": "Recreate"
+          "type": "Rolling",
+          "rollingParams": {
+  			  "timeoutSeconds": 120, 
+    		  "pre": {}, 
+    		  "post": {}
+  			}
         },
         "triggers": [
           {
