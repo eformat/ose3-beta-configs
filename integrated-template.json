@@ -148,14 +148,6 @@
         "creationTimestamp": null
       },
       "spec": {
-        "strategy": {
-          "type": "Rolling",
-          "rollingParams": {
-  			  "timeoutSeconds": 120, 
-    		  "pre": {}, 
-    		  "post": {}
-  			}
-        },
         "triggers": [
           {
             "type": "ImageChange",
