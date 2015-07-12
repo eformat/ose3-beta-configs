@@ -181,9 +181,6 @@
               "name": "frontend"
             }
           },
-          "nodeSelector": {
-            "region": "primary"
-          },
           "spec": {
             "containers": [
               {
@@ -229,6 +226,9 @@
             ],
             "restartPolicy": "Always",
             "dnsPolicy": "ClusterFirst",
+          	"nodeSelector": {
+            	"region": "primary"
+          	},            
             "serviceAccount": ""
           }
         }
@@ -290,9 +290,6 @@
               "name": "database"
             }
           },
-          "nodeSelector": {
-            "region": "primary"
-          },
           "spec": {
             "containers": [
               {
@@ -328,6 +325,9 @@
                 }
               }
             ],
+          	"nodeSelector": {
+	            "region": "primary"
+    	    },            
             "restartPolicy": "Always",
             "dnsPolicy": "ClusterFirst",
             "serviceAccount": ""
