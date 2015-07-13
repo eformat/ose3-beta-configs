@@ -337,7 +337,7 @@
             "name": "DEPLOY_REGION",
             "description": "Deploy Region",
             "value": "primary"
-        },        
+        }        
     ],
     "labels": {
         "template": "nodejs-mongodb-example"
