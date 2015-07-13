@@ -4,10 +4,7 @@
     "metadata": {
         "name": "nodejs-mongodb-example",
         "namespace": "openshift",
-        "selfLink": "/osapi/v1beta3/namespaces/openshift/templates/nodejs-mongodb-example",
-        "uid": "40091c6e-2196-11e5-b16f-001a4ac8e402",
-        "resourceVersion": "184",
-        "creationTimestamp": "2015-07-03T15:14:50Z",
+        "creationTimestamp": null,
         "annotations": {
             "description": "An example Node.js application with a MongoDB database",
             "iconClass": "icon-nodejs",
