@@ -180,10 +180,7 @@
                                     }
                                 ]
                             }
-                        ],
-                        "nodeSelector": {
-            				"region": "primary"
-          				},
+                        ]
                     }
                 }
             }
@@ -268,10 +265,7 @@
                                     }
                                 ]
                             }
-                        ],
-                        "nodeSelector": {
-            				"region": "primary"
-          				},
+                        ]
                     }
                 }
             }
