@@ -174,7 +174,7 @@
                                         "value": "${MONGODB_PASSWORD}"
                                     },
                                     {
-                                        "name": "MONGODB_DATABASE",
+                                        "name": "MONGODB_DATABASE",containers
                                         "value": "${MONGODB_DATABASE}"
                                     },
                                     {
@@ -183,7 +183,10 @@
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "nodeSelector": {
+	            			"region": "primary"
+    	    			}
                     }
                 }
             }
@@ -268,7 +271,10 @@
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        "nodeSelector": {
+	            			"region": "primary"
+    	    			}
                     }
                 }
             }
