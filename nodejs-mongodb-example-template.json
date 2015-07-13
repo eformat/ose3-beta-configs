@@ -182,7 +182,7 @@
                             }
                         ],
                         "nodeSelector": {
-			    "region": "primary"
+			    "region": "${DEPLOY_TO_REGION}"
 			}
                     }
                 }
@@ -270,7 +270,7 @@
                             }
                         ],
 			"nodeSelector": {
-			    "region": "primary"
+			    "region": "${DEPLOY_TO_REGION}"
 			}
                     }
                 }
@@ -329,7 +329,12 @@
             "description": "Password for the database admin user",
             "generate": "expression",
             "from": "[a-zA-Z0-9]{16}"
-        }
+        },
+        {
+            "name": "DEPLOY_TO_REGION",
+            "description": "Region to deploy containers to",
+            "value": "primary"
+        }	
     ],
     "labels": {
         "template": "nodejs-mongodb-example"
