@@ -183,13 +183,7 @@
                                     }
                                 ]
                             }
-                        ],
-                        "restartPolicy": "Always",
-            			"dnsPolicy": "ClusterFirst",
-          				"nodeSelector": {
-            				"region": "primary"
-          				},            
-            			"serviceAccount": ""
+                        ]
                     }
                 }
             }
