@@ -171,7 +171,7 @@
                                         "value": "${MONGODB_PASSWORD}"
                                     },
                                     {
-                                        "name": "MONGODB_DATABASE",containers
+                                        "name": "MONGODB_DATABASE",
                                         "value": "${MONGODB_DATABASE}"
                                     },
                                     {
