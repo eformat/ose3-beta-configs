@@ -143,9 +143,6 @@
                 "selector": {
                     "name": "nodejs-frontend"
                 },
-                "nodeSelector": {
-            		"region": "primary"
-          		},
                 "template": {
                     "metadata": {
                         "name": "nodejs-frontend",
@@ -226,9 +223,6 @@
                 "strategy": {
                     "type": "Recreate"
                 },
-                "nodeSelector": {
-                	"region": "primary"
-          		},
                 "triggers": [
                     {
                         "type": "ConfigChange"
@@ -332,12 +326,7 @@
             "description": "Password for the database admin user",
             "generate": "expression",
             "from": "[a-zA-Z0-9]{16}"
-        },
-        {
-            "name": "DEPLOY_REGION",
-            "description": "Deploy Region",
-            "value": "primary"
-        },
+        }
     ],
     "labels": {
         "template": "nodejs-mongodb-example"
