@@ -291,7 +291,7 @@
         {
             "name": "APPLICATION_DOMAIN",
             "description": "The exposed hostname that will route to the Node.js service",
-            "value": "nodejs-example.openshiftapps.com"
+            "value": "nodejs-example.cloudapps.ose.eformat.co.nz"
         },
         {
             "name": "GITHUB_WEBHOOK_SECRET",
