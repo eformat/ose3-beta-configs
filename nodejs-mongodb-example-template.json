@@ -185,8 +185,8 @@
                             }
                         ],
                         "nodeSelector": {
-	            			"region": "primary"
-    	    			}
+            				"region": "primary"
+          				},
                     }
                 }
             }
@@ -271,10 +271,7 @@
                                     }
                                 ]
                             }
-                        ],
-                        "nodeSelector": {
-	            			"region": "primary"
-    	    			}
+                        ]
                     }
                 }
             }
