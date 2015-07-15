@@ -10,7 +10,95 @@
       "tags": "instant-app"
     }
   },
-  "objects": [
+    "objects": [
+    {
+      "kind": "Service",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "jenkins-web",
+        "creationTimestamp": null
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "jenkins-web",
+            "protocol": "TCP",
+            "port": 8080,
+            "targetPort": 8080,
+            "nodePort": 0
+          }
+        ],
+        "selector": {
+          "name": "jenkins"
+        },
+        "portalIP": "",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "kind": "Service",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "jenkins-repos",
+        "creationTimestamp": null
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "jenkins-repos",
+            "protocol": "TCP",
+            "port": 8081,
+            "targetPort": 8081,
+            "nodePort": 0
+          }
+        ],
+        "selector": {
+          "name": "jenkins"
+        },
+        "portalIP": "",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },	
+    {
+      "kind": "Route",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "jenkins-web",
+        "creationTimestamp": null
+      },
+      "spec": {
+        "host": "jenkins.cloudapps.ose.eformat.co.nz",
+        "to": {
+          "kind": "Service",
+          "name": "jenkins-web"
+        }
+      },
+      "status": {}
+    },
+    {
+      "kind": "Route",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "jenkins-repos",
+        "creationTimestamp": null
+      },
+      "spec": {
+        "host": "repos.jenkins.cloudapps.ose.eformat.co.nz",
+        "to": {
+          "kind": "Service",
+          "name": "jenkins-repos"
+        }
+      },
+      "status": {}
+    },		
     {
       "kind": "ImageStream",
       "apiVersion": "v1",
@@ -42,6 +130,9 @@
           }
         ],
         "replicas": 1,
+        "selector": {
+          "name": "jenkins"
+        },
         "template": {
           "metadata": {
             "creationTimestamp": null,
