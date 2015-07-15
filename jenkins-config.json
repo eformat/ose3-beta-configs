@@ -107,7 +107,7 @@
         "creationTimestamp": null
       },
       "spec": {
-        "dockerImageRepository": "openshift/jenkins-1-centos"
+        "dockerImageRepository": "docker.io/openshift/jenkins-1-centos"
       },
       "status": {
         "dockerImageRepository": ""
