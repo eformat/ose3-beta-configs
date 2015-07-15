@@ -137,7 +137,7 @@
           "metadata": {
             "creationTimestamp": null,
             "labels": {
-              "name": "database"
+              "name": "jenkins"
             }
           },
           "spec": {
