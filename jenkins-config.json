@@ -33,34 +33,20 @@
         "creationTimestamp": null
       },
       "spec": {
+        "strategy": {
+          "type": "Recreate"
+        },
         "triggers": [
-          {
-            "type": "ImageChange",
-            "imageChangeParams": {
-              "automatic": true,
-              "containerNames": [
-                "jenkins-container"
-              ],
-              "from": {
-                "kind": "ImageStreamTag",
-                "name": "jenkins-1-centos:latest"
-              },
-              "lastTriggeredImage": ""
-            }
-          },
           {
             "type": "ConfigChange"
           }
         ],
         "replicas": 1,
-        "selector": {
-          "name": "jenkins"
-        },
         "template": {
           "metadata": {
             "creationTimestamp": null,
             "labels": {
-              "name": "frontend"
+              "name": "database"
             }
           },
           "spec": {
@@ -94,22 +80,7 @@
         }
       },
       "status": {}
-    },
-  {
-      "kind": "Route",
-      "apiVersion": "v1",
-          "metadata": {
-              "name": "jenkins-route"
-              "creationTimestamp": null	      
-          },
-      "spec": {
-        "host": "jenkins.cloudapps.ose.eformat.co.nz",
-        "to": {
-          "kind": "Service",
-          "name": "jenkins"
-        }
-      },
-  }
+    }
   ],
   "labels": {
     "template": "jenkins-template"
