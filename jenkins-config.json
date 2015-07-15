@@ -1,76 +1,113 @@
 {
+  "kind": "Template",
   "apiVersion": "v1",
-  "items": [
+  "metadata": {
+    "name": "jenkins",
+    "creationTimestamp": null,
+    "annotations": {
+      "description": "Jenkins Template",
+      "iconClass": "icon-java",
+      "tags": "instant-app"
+    }
+  },
+  "objects": [
     {
+      "kind": "ImageStream",
       "apiVersion": "v1",
-      "containerPort": 8080,
-      "creationTimestamp": null,
-      "id": "jenkins",
-      "kind": "Service",
-      "port": 5002,
-      "selector": {
-        "name": "jenkinspod"
+      "metadata": {
+        "name": "jenkins-1-centos",
+        "creationTimestamp": null
+      },
+      "spec": {
+        "dockerImageRepository": "openshift/jenkins-1-centos"
+      },
+      "status": {
+        "dockerImageRepository": ""
       }
     },
     {
-      "apiVersion": "v1",
       "kind": "DeploymentConfig",
+      "apiVersion": "v1",
       "metadata": {
-        "name": "jenkins"
+        "name": "jenkins",
+        "creationTimestamp": null
       },
-      "template": {
-        "controllerTemplate": {
-          "podTemplate": {
-            "desiredState": {
-              "manifest": {
-                "containers": [
-                  {
-                    "image": "openshift/jenkins-1-centos",
-                    "name": "jenkins-container",
-                    "ports": [
-                      {
-                        "containerPort": 8080,
-                        "protocol": "TCP"
-                      }
-                    ]
-                  }
-                ],
-                "version": "v1"
+      "spec": {
+        "triggers": [
+          {
+            "type": "ImageChange",
+            "imageChangeParams": {
+              "automatic": true,
+              "containerNames": [
+                "jenkins-container"
+              ],
+              "from": {
+                "kind": "ImageStreamTag",
+                "name": "jenkins-1-centos:latest"
               },
-              "restartpolicy": {}
-            },
-            "labels": {
-              "name": "jenkinspod"
+              "lastTriggeredImage": ""
             }
           },
-          "replicaSelector": {
-            "name": "jenkinspod"
-          },
-          "replicas": 1
+          {
+            "type": "ConfigChange"
+          }
+        ],
+        "replicas": 1,
+        "selector": {
+          "name": "jenkins"
         },
-        "strategy": {
-          "type": "Recreate"
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "name": "frontend"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "jenkins-container",
+                "image": "jenkins-1-centos",
+                "ports": [
+                  {
+                    "containerPort": 8080,
+                    "protocol": "TCP"
+                  }
+                ],       
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "IfNotPresent",
+                "capabilities": {},
+                "securityContext": {
+                  "capabilities": {},
+                  "privileged": false
+                }
+              }
+            ],
+	    "restartPolicy": "Always",
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+                "region": "primary"
+            },            
+            "serviceAccount": ""
+          }
         }
       },
-      "triggers": [
-        {
-          "type": "ConfigChange"
-        }
-      ]
-    }
-  ],
-  "kind": "Config",
-  "metadata": {
-    "name": "jenkins"
-  },
+      "status": {}
+    },
   {
       "kind": "Route",
       "apiVersion": "v1",
           "metadata": {
-            "name": "jenkins-route"
+              "name": "jenkins-route"
+              "creationTimestamp": null	      
           },
-      "id": "jenkins-route",
-      "host": "jenkins.cloudapps.ose.eformat.co.nz",
-      "serviceName": "jenkins"
-    }  
+      "spec": {
+        "host": "jenkins.cloudapps.ose.eformat.co.nz",
+        "to": {
+          "kind": "Service",
+          "name": "jenkins"
+        }
+      },
+  }
 }
