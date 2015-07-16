@@ -110,7 +110,7 @@
                     "dockerStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "java"
+                            "name": "java:latest"
                         }
                     }
                 },
