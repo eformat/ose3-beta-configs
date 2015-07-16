@@ -71,7 +71,7 @@
         "kind": "ImageStream",
 	    "apiVersion": "v1",
 	    "metadata": {
-		"name": "172.30.60.105:5000/api-example/java",
+		"name": "java",
 		"creationTimestamp": null
 	    },
 	    "spec": {
