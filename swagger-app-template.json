@@ -117,7 +117,7 @@
                     "dockerStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "java:openjdk-8u45-jre"
+                            "name": "java"
                         }
                     }
                 },
