@@ -59,7 +59,7 @@
             "kind": "ImageStream",
 	    "apiVersion": "v1",
 	    "metadata": {
-		"name": "java",
+		"name": "java:8-jre",
 		"creationTimestamp": null
 	    },
 	    "spec": {
