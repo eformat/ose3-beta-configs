@@ -55,6 +55,18 @@
             },
    	    "status": {}
 	},
+	{
+	    "kind": "ImageStream",
+	    "apiVersion": "v1",
+	    "metadata": {
+		"name": "api-example",
+		"creationTimestamp": null
+	    },
+	    "spec": {},
+	    "status": {
+		"dockerImageRepository": ""
+	    }
+	},	
         {
             "kind": "ImageStream",
 	    "apiVersion": "v1",
