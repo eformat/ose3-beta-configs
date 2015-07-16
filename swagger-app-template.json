@@ -163,7 +163,7 @@
                         }
                     }
                 ],
-                "replicas": "${API_REPLICAS}",
+                "replicas": 1,
                 "selector": {
                     "deploymentconfig": "api-example"
                 },
@@ -200,13 +200,6 @@
             "status": {}
 	}
     ],
-    "parameters": [	
-    	{
-      	    "name": "API_REPLICAS",
-      	    "description": "Number Of API Service Replicas",
-      	    "value": 1
-    	}		
-    ],    
     "labels": {
     	"template": "api-example"
     }
