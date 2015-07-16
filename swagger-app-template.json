@@ -55,6 +55,23 @@
             },
    	    "status": {}
 	},
+        {
+            "kind": "ImageStream",
+	    "apiVersion": "v1",
+	    "metadata": {
+		"name": "java",
+		"creationTimestamp": null
+	    },
+	    "spec": {
+		"dockerImageRepository": "docker.io/java",
+		"tags": [
+		    {
+			"name": "openjdk-8u45-jre"
+		    }
+		]
+	    },
+	    "status": {}
+	},	
 	{
             "kind": "BuildConfig",
             "apiVersion": "v1",
