@@ -200,12 +200,7 @@
             "status": {}
 	}
     ],
-    "parameters": [
-        {
-            "name": "EAP_RELEASE",
-            "description": "EAP Release version, e.g. 6.4, etc.",
-            "value": "6.4"
-        },	
+    "parameters": [	
     	{
       	    "name": "API_REPLICAS",
       	    "description": "Number Of API Service Replicas",
