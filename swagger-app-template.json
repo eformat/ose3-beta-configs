@@ -1,0 +1,183 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+	"name": "api-example",
+	"creationTimestamp": null,
+	"annotations": {
+	    "description": "Swagger API Demo using CXF, Swagger, Swagger UI, Jetty, OSEv3",
+	    "iconClass": "icon-tomcat",
+	    "tags": "instant-app"
+	}
+    },
+    "objects": [
+	{
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "api-example",
+                "creationTimestamp": null
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "default",
+                        "protocol": "TCP",
+                        "port": 8080,
+                        "targetPort": 8080,
+                        "nodePort": 0
+                    }
+                ],
+                "selector": {
+                    "deploymentconfig": "api-example"
+                },
+                "portalIP": "",
+                "type": "ClusterIP",
+                "sessionAffinity": "None"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+	},
+	{
+            "kind": "Route",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "api-example",
+                "creationTimestamp": null,
+            },
+            "spec": {
+                "host": "api-example.cloudapps.ose.eformat.co.nz",
+                "to": {
+                    "kind": "Service",
+                    "name": "api-example"
+                }
+            },
+   	    "status": {}
+	},
+	{
+            "kind": "BuildConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "api-example",
+                "creationTimestamp": null
+            },
+            "spec": {
+                "triggers": [
+                    {
+                        "type": "GitHub",
+                        "github": {
+                            "secret": "a4dh6kyIP0BAB2wfa3eq"
+                        }
+                    },
+                    {
+                        "type": "Generic",
+                        "generic": {
+                            "secret": "_myj0Ru2rmTxmvEhz8yV"
+                        }
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChange": {}
+                    }
+                ],
+                "source": {
+                    "type": "Git",
+                    "git": {
+                        "uri": "https://github.com/eformat/jax-rs-2.0-swagger",
+                        "ref": "master"
+                    }
+                },
+                "strategy": {
+                    "type": "Docker",
+                    "dockerStrategy": {
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "java:8-jre"
+                        }
+                    }
+                },
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "api-example:latest"
+                    }
+                },
+                "resources": {}
+            },
+            "status": {
+                "lastVersion": 0
+            }
+        },
+	{
+            "kind": "DeploymentConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "api-example",
+                "creationTimestamp": null
+            },
+            "spec": {
+                "strategy": {
+                    "type": "Recreate",
+                    "resources": {}
+                },
+                "triggers": [
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "api-example"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "api-example:latest"
+                            },
+                            "lastTriggeredImage": null
+                        }
+                    }
+                ],
+                "replicas": 1,
+                "selector": {
+                    "deploymentconfig": "api-example"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "deploymentconfig": "api-example"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "api-example",
+                                "image": "172.30.60.105:5000/api-example/api-example",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "imagePullPolicy": "Always",
+                                "securityContext": {
+                                    "capabilities": {},
+                                    "privileged": false
+                                }
+                            }
+                        ],
+                        "restartPolicy": "Always",
+          		"nodeSelector": {
+	            	    "region": "primary"
+    	    		},                                    
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                }
+            },
+            "status": {               
+            }
+        }
+    ],
+    "labels": {
+    	"template": "api-example"
+    }
+}     
