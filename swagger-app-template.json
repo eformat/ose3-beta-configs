@@ -76,11 +76,6 @@
 	    },
 	    "spec": {
 		"dockerImageRepository": "docker.io/java",
-		"tags": [
-		    {
-			"name": "openjdk-8u45-jre"
-		    }
-		]
 	    },
 	    "status": {}
 	},	
