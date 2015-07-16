@@ -119,7 +119,6 @@
             "spec": {
                 "strategy": {
                     "type": "Recreate",
-                    "resources": {}
                 },
                 "triggers": [
                     {
@@ -170,12 +169,12 @@
 	            	    "region": "primary"
     	    		},                                    
                         "dnsPolicy": "ClusterFirst"
+			"serviceAccount": ""			
                     }
                 }
             },
-            "status": {               
-            }
-        }
+            "status": {}
+       }
     ],
     "labels": {
     	"template": "api-example"
