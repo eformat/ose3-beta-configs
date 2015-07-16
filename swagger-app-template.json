@@ -163,7 +163,7 @@
                         }
                     }
                 ],
-                "replicas": ${API_REPLICAS},
+                "replicas": "${API_REPLICAS}",
                 "selector": {
                     "deploymentconfig": "api-example"
                 },
