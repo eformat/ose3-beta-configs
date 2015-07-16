@@ -6,8 +6,7 @@
 	"creationTimestamp": null,
 	"annotations": {
 	    "description": "Swagger API Demo using CXF, Swagger, Swagger UI, Jetty, OSEv3",
-	    "iconClass": "icon-tomcat",
-	    "tags": "instant-app"
+	    "iconClass": "icon-tomcat"
 	}
     },
     "objects": [
@@ -67,15 +66,15 @@
 		"dockerImageRepository": ""
 	    }
 	},	
-    {
-        "kind": "ImageStream",
+	{
+            "kind": "ImageStream",
 	    "apiVersion": "v1",
 	    "metadata": {
 		"name": "java",
 		"creationTimestamp": null
 	    },
 	    "spec": {
-			"dockerImageRepository": "docker.io/java"
+		"dockerImageRepository": "docker.io/java"
 	    },
 	    "status": {}
 	},	
@@ -133,7 +132,7 @@
                 "lastVersion": 0
             }
         },
-		{
+	{
             "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
@@ -189,24 +188,24 @@
                             }
                         ],
                         "restartPolicy": "Always",
-		          		"nodeSelector": {
-	    	        	    "region": "primary"
-    	    			},                                    
-                		"dnsPolicy": "ClusterFirst",
-   			    		"serviceAccount": ""			
-	                }
+		        "nodeSelector": {
+	    	            "region": "primary"
+    	    		},                                    
+                	"dnsPolicy": "ClusterFirst",
+   			"serviceAccount": ""			
+	            }
     	        }
             },
             "status": {}
-       }
+	}
     ],
-	"parameters": [
+    "parameters": [
     	{
-      		"name": "API_REPLICAS",
-      		"description": "Number Of API Service Replicas",
-      		"value": "1"
+      	    "name": "API_REPLICAS",
+      	    "description": "Number Of API Service Replicas",
+      	    "value": "1"
     	}				
-	],    
+    ],    
     "labels": {
     	"template": "api-example"
     }
