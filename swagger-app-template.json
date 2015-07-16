@@ -75,7 +75,7 @@
 		"creationTimestamp": null
 	    },
 	    "spec": {
-			"dockerImageRepository": "172.30.60.105:5000/api-example/java"
+			"dockerImageRepository": ""
 	    },
 	    "status": {}
 	},	
