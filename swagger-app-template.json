@@ -116,7 +116,7 @@
                     "type": "Docker",
                     "dockerStrategy": {
                         "from": {
-                            "kind": "ImageStreamTag",
+                            "kind": "DockerImage",
                             "name": "java:8-jre"
                         }
                     }
