@@ -118,7 +118,7 @@
             },
             "spec": {
                 "strategy": {
-                    "type": "Recreate",
+                    "type": "Recreate"
                 },
                 "triggers": [
                     {
@@ -165,13 +165,13 @@
                             }
                         ],
                         "restartPolicy": "Always",
-          		"nodeSelector": {
-	            	    "region": "primary"
-    	    		},                                    
-                        "dnsPolicy": "ClusterFirst"
-			"serviceAccount": ""			
-                    }
-                }
+		          		"nodeSelector": {
+	    	        	    "region": "primary"
+    	    			},                                    
+                		"dnsPolicy": "ClusterFirst",
+   			    		"serviceAccount": ""			
+	                }
+    	        }
             },
             "status": {}
        }
