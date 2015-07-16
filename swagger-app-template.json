@@ -59,7 +59,7 @@
             "kind": "ImageStream",
 	    "apiVersion": "v1",
 	    "metadata": {
-		"name": "java:8-jre",
+		"name": "java",
 		"creationTimestamp": null
 	    },
 	    "spec": {
@@ -110,7 +110,7 @@
                     "dockerStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "java:8-jre"
+                            "name": "java"
                         }
                     }
                 },
