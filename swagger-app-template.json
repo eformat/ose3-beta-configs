@@ -6,7 +6,8 @@
 	"creationTimestamp": null,
 	"annotations": {
 	    "description": "Swagger API Demo using CXF, Swagger, Swagger UI, Jetty, OSEv3",
-	    "iconClass": "icon-tomcat"
+	    "iconClass": "icon-tomcat",
+	    "tags": "instant-app"
 	}
     },
     "objects": [
@@ -204,7 +205,7 @@
       	    "name": "API_REPLICAS",
       	    "description": "Number Of API Service Replicas",
       	    "value": "1"
-    	}				
+    	}		
     ],    
     "labels": {
     	"template": "api-example"
