@@ -2,15 +2,15 @@
     "kind": "Route",
     "apiVersion": "v1",
     "metadata": {
-        "name": "frontend-jenkins",
+        "name": "frontend-prod-jenkins",
         "namespace": "jenkins-test",
         "creationTimestamp": null
     },
     "spec": {
-        "host": "frontend.jenkins.cloudapps.ose.eformat.co.nz",
+        "host": "frontend.prod.jenkins.cloudapps.ose.eformat.co.nz",
         "to": {
             "kind": "Service",
-            "name": "frontend"
+            "name": "frontend-prod"
         }
     },
     "status": {}
