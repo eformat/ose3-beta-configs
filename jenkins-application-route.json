@@ -14,4 +14,21 @@
         }
     },
     "status": {}
+},
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "frontend-prod-jenkins",
+        "namespace": "jenkins-test",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "host": "frontend.prod.jenkins.cloudapps.ose.eformat.co.nz",
+        "to": {
+            "kind": "Service",
+            "name": "frontend-prod"
+        }
+    },
+    "status": {}
 }
