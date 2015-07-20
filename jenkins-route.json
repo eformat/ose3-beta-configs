@@ -7,7 +7,7 @@
             "kind": "Route",
             "apiVersion": "v1",
             "metadata": {
-                "name": "jenkins",
+                "name": "jenkins-external",
                 "namespace": "jenkins",
                 "selfLink": "/osapi/v1beta3/namespaces/jenkins/routes/jenkins"
             },
