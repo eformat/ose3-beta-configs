@@ -1,14 +1,24 @@
 {
-  "kind": "Route",
-  "apiVersion": "v1",
-  "metadata": {
-    "name": "jenkins-route"
-  },
-  "spec": {
-    "host": "jenkins.cloudapps.ose.eformat.co.nz",
-    "to": {
-      "kind": "Service",
-      "name": "jenkins"
-    }
-  }
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {},
+    "items": [
+        {
+            "kind": "Route",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "jenkins",
+                "namespace": "jenkins",
+                "selfLink": "/osapi/v1beta3/namespaces/jenkins/routes/jenkins"
+            },
+            "spec": {
+                "host": "jenkins.cloudapps.ose.eformat.co.nz",
+                "to": {
+                    "kind": "Service",
+                    "name": "jenkins"
+                }
+            },
+            "status": {}
+        }
+    ]
 }
