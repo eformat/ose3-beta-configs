@@ -8,7 +8,7 @@
             "apiVersion": "v1",
             "metadata": {
                 "name": "jenkins-external",
-                "namespace": "jenkins",
+                "namespace": "jenkins-test",
                 "selfLink": "/osapi/v1beta3/namespaces/jenkins/routes/jenkins"
             },
             "spec": {
