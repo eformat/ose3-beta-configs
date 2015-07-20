@@ -1,11 +1,3 @@
-{
-  "metadata":{
-    "name":"jenkins-route"
-  },
-  "kind":"Config",
-  "apiVersion":"v1beta1",
-  "creationTimestamp":null,
-  "items":[
     {
       "kind": "Route",
       "apiVersion": "v1beta1",
@@ -16,5 +8,3 @@
       "host": "jenkins.cloudapps.ose.eformat.co.nz",
       "serviceName": "jenkins"
     }
-  ]
-}
