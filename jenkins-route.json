@@ -12,7 +12,7 @@
                 "selfLink": "/osapi/v1beta3/namespaces/jenkins/routes/jenkins"
             },
             "spec": {
-                "host": "jenkins.cloudapps.ose.eformat.co.nz",
+                "host": "jenkins-test.cloudapps.ose.eformat.co.nz",
                 "to": {
                     "kind": "Service",
                     "name": "jenkins"
