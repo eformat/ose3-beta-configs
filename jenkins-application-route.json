@@ -1,0 +1,17 @@
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "frontend-external",
+        "namespace": "jenkins",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "host": "frontend.jenkins.cloudapps.ose.eformat.co.nz",
+        "to": {
+            "kind": "Service",
+            "name": "frontend"
+        }
+    },
+    "status": {}
+}
