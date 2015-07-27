@@ -2,15 +2,15 @@
     "kind": "Route",
     "apiVersion": "v1",
     "metadata": {
-        "name": "liberty",
-        "namespace": "liberty",
+        "name": "frontend-jenkins",
+        "namespace": "jenkins-test",
         "creationTimestamp": null
     },
     "spec": {
-        "host": "liberty.cloudapps.ose.eformat.co.nz",
+        "host": "frontend.jenkins.cloudapps.ose.eformat.co.nz",
         "to": {
             "kind": "Service",
-            "name": "liberty"
+            "name": "frontend"
         }
     },
     "status": {}
