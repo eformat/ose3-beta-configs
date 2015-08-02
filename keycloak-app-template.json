@@ -1,0 +1,199 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+		"name": "keycloak",
+		"creationTimestamp": null,
+		"annotations": {
+	    	"description": "Keycloak",
+	    	"iconClass": "icon-tomcat",
+	    	"tags": "instant-app"
+		}
+    },
+    "objects": [
+    {
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "keycloak-web",
+        "namespace": "keycloak",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "default",
+                "protocol": "TCP",
+                "port": 8080,
+                "targetPort": 8080,
+                "nodePort": 0
+            }
+        ],
+        "selector": {
+            "deploymentconfig": "keycloak"
+        },
+        "portalIP": "",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+	},
+	{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "keycloak-web",
+        "namespace": "keycloak",
+        "creationTimestamp": null,
+        "annotations": {
+            "openshift.io/host.generated": "false"
+        }
+    },
+    "spec": {
+        "host": "keycloak.cloudapps.ose.eformat.co.nz",
+        "to": {
+            "kind": "Service",
+            "name": "keycloak-web"
+        }
+    },
+    "status": {}
+	},
+	{
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "keycloak",
+        "namespace": "keycloak",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "triggers": [
+            {
+                "type": "GitHub",
+                "github": {
+                    "secret": "sJ1_jykrbRiM3Ss8BjBD"
+                }
+            },
+            {
+                "type": "Generic",
+                "generic": {
+                    "secret": "iW0TSM-nT2trpOjKRdH_"
+                }
+            },
+            {
+                "type": "ImageChange",
+                "imageChange": {
+                    "lastTriggeredImageID": "jboss/base-jdk:7"
+                }
+            }
+        ],
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "https://github.com/eformat/keycloak"
+            }
+        },
+        "strategy": {
+            "type": "Docker",
+            "dockerStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "base-jdk:7"
+                }
+            }
+        },
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "keycloak:latest"
+            }
+        },
+        "resources": {}
+    },
+    "status": {
+        "lastVersion": 3
+    }
+	},
+	{
+    "kind": "DeploymentConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "keycloak",
+        "namespace": "keycloak",
+        "creationTimestamp": null
+    },
+    "spec": {
+        "strategy": {
+            "type": "Recreate",
+            "resources": {}
+        },
+        "triggers": [
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "type": "ImageChange",
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "keycloak"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "name": "keycloak:latest"
+                    },
+                    "lastTriggeredImage": null
+                }
+            }
+        ],
+        "replicas": 1,
+        "selector": {
+            "deploymentconfig": "keycloak"
+        },
+        "template": {
+            "metadata": {
+                "creationTimestamp": null,
+                "labels": {
+                    "deploymentconfig": "keycloak"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "keycloak",
+                        "image": "172.30.60.105:5000/keycloak/keycloak",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "imagePullPolicy": "Always",
+                        "securityContext": {
+                            "capabilities": {},
+                            "privileged": false
+                        }
+                    }
+                ],
+                "restartPolicy": "Always",
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                    "region": "primary"
+                }
+            }
+        }
+    },
+    "status": {
+        "latestVersion": 3,
+        "details": {
+            "causes": [
+                {
+                    "type": "ConfigChange"
+                }
+            ]
+        }
+    }
+	}
+    ],
+    "labels": {
+    	"template": "keycloak"
+    }
+}
