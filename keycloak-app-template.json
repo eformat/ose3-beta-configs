@@ -61,6 +61,30 @@
     "status": {}
 	},
 	{
+	    "kind": "ImageStream",
+	    "apiVersion": "v1",
+	    "metadata": {
+		"name": "keycloak",
+		"creationTimestamp": null
+	    },
+	    "spec": {},
+	    "status": {
+		"dockerImageRepository": ""
+	    }
+	},	
+	{
+        "kind": "ImageStream",
+	    "apiVersion": "v1",
+	    "metadata": {
+		"name": "java",
+		"creationTimestamp": null
+	    },
+	    "spec": {
+		"dockerImageRepository": "docker.io/jboss/base-jdk"
+	    },
+	    "status": {}
+	},	
+	{
     "kind": "BuildConfig",
     "apiVersion": "v1",
     "metadata": {
