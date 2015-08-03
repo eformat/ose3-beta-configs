@@ -124,7 +124,7 @@
             "dockerStrategy": {
                 "from": {
                     "kind": "DockerImage",
-                    "name": "base-jdk:7"
+                    "name": "jboss/base-jdk:7"
                 }
             }
         },
