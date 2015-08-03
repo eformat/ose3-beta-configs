@@ -205,16 +205,7 @@
             }
         }
     },
-    "status": {
-        "latestVersion": 3,
-        "details": {
-            "causes": [
-                {
-                    "type": "ConfigChange"
-                }
-            ]
-        }
-    }
+    "status": {}
 	}
     ],
     "labels": {
