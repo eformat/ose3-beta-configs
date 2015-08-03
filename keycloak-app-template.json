@@ -76,7 +76,7 @@
         "kind": "ImageStream",
 	    "apiVersion": "v1",
 	    "metadata": {
-		"name": "java",
+		"name": "base-jdk",
 		"creationTimestamp": null
 	    },
 	    "spec": {
@@ -136,9 +136,7 @@
         },
         "resources": {}
     },
-    "status": {
-        "lastVersion": 3
-    }
+    "status": {}
 	},
 	{
     "kind": "DeploymentConfig",
