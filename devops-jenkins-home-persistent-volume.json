@@ -10,7 +10,7 @@
             },
         "accessModes": [ "ReadWriteMany" ],
         "nfs": {
-            "path": "/mnt/bigdisk/ose3-jenkins-home",
+            "path": "/mnt/bigdisk/ose3-jenkins",
             "server": "192.168.0.172"
         }
       }
