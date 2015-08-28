@@ -1,0 +1,17 @@
+{
+  "kind": "Route",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "apiman-route"
+  },
+  "spec": {
+    "host": "apiman-service.cloudapps.example.com",
+    "to": {
+      "kind": "Service",
+      "name": "apiman"
+    },
+    "tls": {
+      "termination": "edge"
+    }
+  }
+}
