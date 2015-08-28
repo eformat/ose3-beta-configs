@@ -12,7 +12,7 @@
     },
     "tls": {
       "termination": "reencrypt",
-      "destinationCACertificate": ----BEGIN CERTIFICATE-----
+      "destinationCACertificate":|----BEGIN CERTIFICATE-----
 MIIDeTCCAmGgAwIBAgIEYLe3DTANBgkqhkiG9w0BAQQFADBtMQswCQYDVQQGEwJV
 UzESMBAGA1UECBMJTmV3ICBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazESMBAGA1UE
 ChMJYXBpbWFuLmlvMQ8wDQYDVQQLEwZhcGltYW4xEjAQBgNVBAMTCWxvY2FsaG9z
