@@ -8,7 +8,7 @@
     "host": "apiman-service.cloudapps.ose.eformat.co.nz",
     "to": {
       "kind": "Service",
-      "name": "apiman"
+      "name": "apiman-ssl"
     },
     "tls": {
       "termination": "reencrypt",      
