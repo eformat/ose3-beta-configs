@@ -1,0 +1,32 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "apiman-ssl",
+        "namespace": "fairweatherfriends",
+        "labels": {
+            "app": "apiman"
+        }
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "8443-tcp",
+                "protocol": "TCP",
+                "port": 8443,
+                "targetPort": 8443,
+                "nodePort": 0
+            }
+        ],
+        "selector": {
+            "deploymentconfig": "apiman"
+        },
+        "portalIP": "172.30.1.136",
+        "clusterIP": "172.30.1.136",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+}
