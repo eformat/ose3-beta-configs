@@ -5,7 +5,7 @@
     "name": "apiman-route"
   },
   "spec": {
-    "host": "apiman-service.cloudapps.example.com",
+    "host": "apiman-service.cloudapps.ose.eformat.co.nz",
     "to": {
       "kind": "Service",
       "name": "apiman"
