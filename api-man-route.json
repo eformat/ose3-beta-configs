@@ -12,7 +12,8 @@
     },
     "tls": {
       "termination": "reencrypt",
-      "destinationCACertificate":"\n----BEGIN CERTIFICATE-----
+      "destinationCACertificate":"
+----BEGIN CERTIFICATE-----
 MIIDeTCCAmGgAwIBAgIEYLe3DTANBgkqhkiG9w0BAQQFADBtMQswCQYDVQQGEwJV
 UzESMBAGA1UECBMJTmV3ICBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazESMBAGA1UE
 ChMJYXBpbWFuLmlvMQ8wDQYDVQQLEwZhcGltYW4xEjAQBgNVBAMTCWxvY2FsaG9z
@@ -31,7 +32,8 @@ Tfpw/7uG8WMrfxcOwmUaV/2hdrYpNSQBrvr3afSN2/Qv63iX0+jaPt23DsX9L4al
 CwdJMgrK3md3VFHGMKxfcsh+o7ZZ9yM95Nj4fSxyTNiGO8OdTgmOQWiqrYerSmff
 83e+qoj8MyHnHHbepcD6bck8npgQrhaRm1Wl/zCISOANjf0g4V5PkQIdkaA6/vwr
 VWDa5myfdvkSe3S+xX5vJz7qw0+ybIZJxHQc5RfWAQa6/SxrxzWoP0L+gQ/4Dfwv
-Jo3Ld7RSpY9kUaBM4Mcd6IloirrWdg9+oQXpY2A=\n-----END CERTIFICATE-----"
+Jo3Ld7RSpY9kUaBM4Mcd6IloirrWdg9+oQXpY2A=
+-----END CERTIFICATE-----"
     }
   }
 }
