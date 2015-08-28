@@ -11,7 +11,7 @@
       "name": "apiman"
     },
     "tls": {
-      "termination": "reencrpyt"      
+      "termination": "reencrypt"      
     }
   }
 }
