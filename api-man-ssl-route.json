@@ -2,13 +2,13 @@
   "kind": "Route",
   "apiVersion": "v1",
   "metadata": {
-    "name": "apiman-http-route"
+    "name": "apiman-route"
   },
   "spec": {
     "host": "apiman-service.cloudapps.ose.eformat.co.nz",
     "to": {
       "kind": "Service",
-      "name": "apiman"
+      "name": "apiman-ssl"
     },
     "tls": {
       "termination": "passthrough"      
