@@ -9,9 +9,6 @@
     "to": {
       "kind": "Service",
       "name": "apiman"
-    },
-    "tls": {
-      "termination": "passthrough"      
-    }
+    } 
   }
 }
