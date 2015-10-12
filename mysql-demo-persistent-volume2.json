@@ -1,0 +1,17 @@
+   {
+      "apiVersion": "v1",
+      "kind": "PersistentVolume",
+      "metadata": {
+        "name": "pv0002"
+      },
+      "spec": {
+        "capacity": {
+            "storage": "2Gi"
+            },
+        "accessModes": [ "ReadWriteMany" ],
+        "nfs": {
+            "path": "/mnt/mysql-mike-pvol",
+            "server": "virt"
+        }
+      }
+    }
