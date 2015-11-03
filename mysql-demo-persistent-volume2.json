@@ -8,7 +8,7 @@
         "capacity": {
             "storage": "2Gi"
             },
-        "accessModes": [ "ReadWriteMany" ],
+        "accessModes": [ "ReadWriteOnce" ],
         "nfs": {
             "path": "/mnt/mysql-mike-pvol",
             "server": "virt"
